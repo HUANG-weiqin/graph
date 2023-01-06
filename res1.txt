@@ -1,0 +1,160 @@
+gcc -O2 -Wall -Wextra -U DEBUG_1 -U DEBUG_2 -U DEBUG_3 -Iinclude -std=gnu17 -c -o obj/rank.o src/rank.c
+gcc -o bin/mpm obj/elmlist.o obj/list.o obj/job.o obj/io.o obj/rank.o obj/main.o -lm
+./bin/mpm ./data/graph1.dta
+Liste des tâches lue et rangée par titre croissant
+		====================
+JOB DC
+	preceeded by [ DS ]
+	followed by [ E PC ]
+	iDeg=1	oDeg=2	life=4.00	rank=U	early=U	late=U	totale= U	critical= N
+JOB DS
+	preceeded by [ ]
+	followed by [ DC E PS ]
+	iDeg=0	oDeg=3	life=2.00	rank=U	early=U	late=U	totale= U	critical= N
+JOB E
+	preceeded by [ DC DS ]
+	followed by [ PC ]
+	iDeg=2	oDeg=1	life=3.00	rank=U	early=U	late=U	totale= U	critical= N
+JOB P
+	preceeded by [ PC ]
+	followed by [ PE PM ]
+	iDeg=1	oDeg=2	life=5.00	rank=U	early=U	late=U	totale= U	critical= N
+JOB PC
+	preceeded by [ DC E ]
+	followed by [ P PS ]
+	iDeg=2	oDeg=2	life=4.00	rank=U	early=U	late=U	totale= U	critical= N
+JOB PE
+	preceeded by [ P ]
+	followed by [ ]
+	iDeg=1	oDeg=0	life=1.00	rank=U	early=U	late=U	totale= U	critical= N
+JOB PM
+	preceeded by [ P PS ]
+	followed by [ ]
+	iDeg=2	oDeg=0	life=2.00	rank=U	early=U	late=U	totale= U	critical= N
+JOB PS
+	preceeded by [ DS PC ]
+	followed by [ PM ]
+	iDeg=2	oDeg=1	life=3.00	rank=U	early=U	late=U	totale= U	critical= N
+		====================
+
+Liste des tâches triée par degrée d'entrée croissant
+		====================
+JOB DS
+	preceeded by [ ]
+	followed by [ DC E PS ]
+	iDeg=0	oDeg=3	life=2.00	rank=U	early=U	late=U	totale= U	critical= N
+JOB DC
+	preceeded by [ DS ]
+	followed by [ E PC ]
+	iDeg=1	oDeg=2	life=4.00	rank=U	early=U	late=U	totale= U	critical= N
+JOB P
+	preceeded by [ PC ]
+	followed by [ PE PM ]
+	iDeg=1	oDeg=2	life=5.00	rank=U	early=U	late=U	totale= U	critical= N
+JOB PE
+	preceeded by [ P ]
+	followed by [ ]
+	iDeg=1	oDeg=0	life=1.00	rank=U	early=U	late=U	totale= U	critical= N
+JOB PS
+	preceeded by [ DS PC ]
+	followed by [ PM ]
+	iDeg=2	oDeg=1	life=3.00	rank=U	early=U	late=U	totale= U	critical= N
+JOB E
+	preceeded by [ DC DS ]
+	followed by [ PC ]
+	iDeg=2	oDeg=1	life=3.00	rank=U	early=U	late=U	totale= U	critical= N
+JOB PM
+	preceeded by [ P PS ]
+	followed by [ ]
+	iDeg=2	oDeg=0	life=2.00	rank=U	early=U	late=U	totale= U	critical= N
+JOB PC
+	preceeded by [ DC E ]
+	followed by [ P PS ]
+	iDeg=2	oDeg=2	life=4.00	rank=U	early=U	late=U	totale= U	critical= N
+		====================
+
+Liste des tâches triée par rang croissant
+		====================
+JOB DS
+	preceeded by [ ]
+	followed by [ DC E PS ]
+	iDeg=0	oDeg=3	life=2.00	rank=0	early=U	late=U	totale= U	critical= N
+JOB DC
+	preceeded by [ DS ]
+	followed by [ E PC ]
+	iDeg=1	oDeg=2	life=4.00	rank=1	early=U	late=U	totale= U	critical= N
+JOB E
+	preceeded by [ DC DS ]
+	followed by [ PC ]
+	iDeg=2	oDeg=1	life=3.00	rank=2	early=U	late=U	totale= U	critical= N
+JOB PC
+	preceeded by [ DC E ]
+	followed by [ P PS ]
+	iDeg=2	oDeg=2	life=4.00	rank=3	early=U	late=U	totale= U	critical= N
+JOB P
+	preceeded by [ PC ]
+	followed by [ PE PM ]
+	iDeg=1	oDeg=2	life=5.00	rank=4	early=U	late=U	totale= U	critical= N
+JOB PS
+	preceeded by [ DS PC ]
+	followed by [ PM ]
+	iDeg=2	oDeg=1	life=3.00	rank=4	early=U	late=U	totale= U	critical= N
+JOB PM
+	preceeded by [ P PS ]
+	followed by [ ]
+	iDeg=2	oDeg=0	life=2.00	rank=5	early=U	late=U	totale= U	critical= N
+JOB PE
+	preceeded by [ P ]
+	followed by [ ]
+	iDeg=1	oDeg=0	life=1.00	rank=5	early=U	late=U	totale= U	critical= N
+		====================
+
+Prune edges
+edge [ DS |----> E ] is pruned of G
+edge [ DS |----> PS ] is pruned of G
+edge [ DC |----> PC ] is pruned of G
+
+Marges totales des tâches
+		====================
+JOB alpha
+	preceeded by [ ]
+	followed by [ DS ]
+	iDeg=0	oDeg=1	life=0.00	rank=-1	early=0.00	late=0.00	totale= 0.00	critical= Y
+JOB DS
+	preceeded by [ alpha ]
+	followed by [ DC ]
+	iDeg=1	oDeg=3	life=2.00	rank=0	early=0.00	late=0.00	totale= 0.00	critical= Y
+JOB DC
+	preceeded by [ DS ]
+	followed by [ E ]
+	iDeg=1	oDeg=2	life=4.00	rank=1	early=2.00	late=2.00	totale= 0.00	critical= Y
+JOB E
+	preceeded by [ DC ]
+	followed by [ PC ]
+	iDeg=2	oDeg=1	life=3.00	rank=2	early=6.00	late=6.00	totale= 0.00	critical= Y
+JOB PC
+	preceeded by [ E ]
+	followed by [ P PS ]
+	iDeg=2	oDeg=2	life=4.00	rank=3	early=9.00	late=9.00	totale= 0.00	critical= Y
+JOB P
+	preceeded by [ PC ]
+	followed by [ PE PM ]
+	iDeg=1	oDeg=2	life=5.00	rank=4	early=13.00	late=13.00	totale= 0.00	critical= Y
+JOB PS
+	preceeded by [ PC ]
+	followed by [ PM ]
+	iDeg=2	oDeg=1	life=3.00	rank=4	early=13.00	late=15.00	totale= 2.00	critical= N
+JOB PM
+	preceeded by [ P PS ]
+	followed by [ omega ]
+	iDeg=2	oDeg=0	life=2.00	rank=5	early=18.00	late=18.00	totale= 0.00	critical= Y
+JOB PE
+	preceeded by [ P ]
+	followed by [ omega ]
+	iDeg=1	oDeg=0	life=1.00	rank=5	early=18.00	late=19.00	totale= 1.00	critical= N
+JOB omega
+	preceeded by [ PE PM ]
+	followed by [ ]
+	iDeg=0	oDeg=0	life=0.00	rank=6	early=20.00	late=20.00	totale= U	critical= Y
+		====================
+
