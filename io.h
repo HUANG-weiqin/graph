@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #define UNDEF -1
+#define BIGNUMB 99999
 
 static job_t* jobs[255];
 static job_nb = 0;
@@ -21,7 +22,10 @@ job_t* get_job_by_name(char *name) {
 	res->au_plus_tard = UNDEF;
 	res->marge_totale = UNDEF;
 	res->marge_libre = UNDEF;
-	res->critique = UNDEF;
+	res->critique = 0;
+	res->output_degree = 0;
+	res->input_degree = 0;
+	res->dyn_input_degree = 0;
 	jobs[job_nb] = res;
 	job_nb += 1;
 	res->precedence = creat_list();
@@ -30,24 +34,6 @@ job_t* get_job_by_name(char *name) {
 	return res;
 }
 
-int insert_to_list(list_t* list,job_t* job) {
-	elmlist_t* e = malloc(sizeof(elmlist_t));
-	e->next = 0;
-	e->prev = 0;
-	e->jb = job;
-	if (list->numelm == 0) {
-		list->numelm = 1;
-		list->head = e;
-		list->tail = e;
-	}
-	else {
-		list->numelm += 1;
-		list->tail->next = e;
-		e->prev = list->tail;
-		list->tail = e;
-	}
-	return list->numelm;
-}
 
 
 list_t* read_graph(char* str) {
@@ -62,12 +48,14 @@ list_t* read_graph(char* str) {
 		int result = split(jobs_str, buff, ' ');
 		if (result > 1) {
 			job_t* j = get_job_by_name(*jobs_str);
-			printf("%s\n", j->title);
+			printf("%s + %d\n", j->title,result);
 			j->life = atoi(jobs_str[1]);
 			for (int i = 2; i < result-1; ++i) {
 				job_t* jp = get_job_by_name(jobs_str[i]);
 				insert_to_list(j->precedence, jp);
 				insert_to_list(jp->posteriority, j);
+				j->input_degree += 1;
+				jp->output_degree += 1;
 			}
 			insert_to_list(res, j);
 		}
