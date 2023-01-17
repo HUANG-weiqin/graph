@@ -55,13 +55,13 @@ Explication du void prune(list_t* G):
 
 Explication du void marges_totales(list_t* G):
 
-  1-Tout d'abord, nous devons ajouter deux tâches virtuelles, alpha et omega.
+      1-Tout d'abord, nous devons ajouter deux tâches virtuelles, alpha et omega.
 
-    alpha comme tâche de départ virtuelle, pour toutes les tâches avec un rang de 0 nous faisons de alpha leur tâche prédécesseur
+        alpha comme tâche de départ virtuelle, pour toutes les tâches avec un rang de 0 nous faisons de alpha leur tâche prédécesseur
 
-    omega comme tâche finale virtuelle, pour toutes les tâches qui n'ont pas de post-tâches, nous faisons de omega leur post-tâche.
-    
-  2-Nous avons ensuite calculé la date de début au plus tôt et la date de début au plus tard selon la méthode utilisée sur le PPT.
-  
-  3-Enfin, pour tout job, sa marge totale = date de début au plus tard - date de début au plus tôt.
+        omega comme tâche finale virtuelle, pour toutes les tâches qui n'ont pas de post-tâches, nous faisons de omega leur post-tâche.
+
+      2-Nous avons ensuite calculé la date de début au plus tôt et la date de début au plus tard selon la méthode utilisée sur le PPT.
+
+      3-Enfin, pour tout job, sa marge totale = date de début au plus tard - date de début au plus tôt.
 
