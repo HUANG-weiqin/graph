@@ -38,18 +38,18 @@ Explication du void ranking(list_t* G):
 
 Explication du void prune(list_t* G):
 
-  Si nous avons deux job, un pour j1 et un pour j2, et j2 est job précédent de j1
-  j1 a un rank de 5
-  j2 a un rank de 3
+      Si nous avons deux job, un pour j1 et un pour j2, et j2 est job précédent de j1
+      j1 a un rank de 5
+      j2 a un rank de 3
 
-  alors sûrement j1 a un autre job précédent j3, et le rank de j3 est 5-1 = 4
-  Cela signifie que le fait que j2 soit une tâche précédente de j1 n'a pas d'importance, car j1 ne peut pas commencer tant que j3 n'est pas terminée.
-  j2 doit avoir terminé avant j3 parce que son rank est inférieur à celui de j3, donc j1 n'a rien à voir avec le moment où j2 termine.
-  Dans ce cas, peu importe que j2 soit une pré-tâche de j1, nous pouvons retirer j2 de la liste des pré-tâches de j1 et également retirer
-  j1 de la liste des post-tâches de j2
+      alors sûrement j1 a un autre job précédent j3, et le rank de j3 est 5-1 = 4
+      Cela signifie que le fait que j2 soit une tâche précédente de j1 n'a pas d'importance, car j1 ne peut pas commencer tant que j3 n'est pas terminée.
+      j2 doit avoir terminé avant j3 parce que son rank est inférieur à celui de j3, donc j1 n'a rien à voir avec le moment où j2 termine.
+      Dans ce cas, peu importe que j2 soit une pré-tâche de j1, nous pouvons retirer j2 de la liste des pré-tâches de j1 et également retirer
+      j1 de la liste des post-tâches de j2
 
-  En d'autres termes, pour toute paire de jobs, si la différence de rank entre eux est supérieure ou égale à 2, alors leur relation de préséance peut être supprimé.
-  C'est ce que fait le prune, il supprime toutes les relations précédentes et suivantes qui peuvent être supprimées avec la différence de rank entre eux supérieure ou   égale à 2.
+      En d'autres termes, pour toute paire de jobs, si la différence de rank entre eux est supérieure ou égale à 2, alors leur relation de préséance peut être supprimé.
+      C'est ce que fait le prune, il supprime toutes les relations précédentes et suivantes qui peuvent être supprimées avec la différence de rank entre eux supérieure ou   égale à 2.
   
  
 
